@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bai 4.2.1</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+body {
+  font-family: Arial;
+  margin: 20px;
+}
+#khung {
+  border: 1px solid gray;
+  padding: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  width: 35px;
+  height: 35px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+tr:nth-child(odd) td {
+  background-color: lightblue;
+}
+tr:nth-child(even) td {
+  background-color: lightyellow;
+}
+#ten {
+  text-align: center;
+  margin-top: 8px;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+<button id="toggle">Toggle</button>
+
+<div id="khung">
+  <table id="banco"></table>
+  <div id="ten">CARO GAME</div>
+</div>
+
+<script>
+$(document).ready(function() {
+  for (var i = 0; i < 10; i++) {
+    var row = "<tr>";
+    for (var j = 0; j < 10; j++) {
+      row = row + "<td></td>";
+    }
+    row = row + "</tr>";
+    $("#banco").append(row);
+  }
+
+  $("#hide").click(function() {
+    $("#khung").hide();
+  });
+
+  $("#show").click(function() {
+    $("#khung").show();
+  });
+
+  $("#toggle").click(function() {
+    $("#khung").toggle();
+  });
+
+  var luot = "X";
+  $("#banco").on("click", "td", function() {
+    if ($(this).text() == "") {
+      $(this).text(luot);
+      if (luot == "X") {
+        luot = "O";
+      } else {
+        luot = "X";
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
